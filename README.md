@@ -24,11 +24,11 @@ O **Free Games Viewer** é uma aplicação web que permite aos usuários pesquis
 
 1. Clone o repositório:
     ```sh
-    git clone https://github.com/yourusername/free-games-viewer.git
+    git clone https://github.com/AndersonC96/freeGames.git
     ```
 2. Navegue até o diretório do projeto:
     ```sh
-    cd free-games-viewer
+    cd freeGames
     ```
 3. Configure um servidor local:
     - Certifique-se de ter o PHP instalado.
