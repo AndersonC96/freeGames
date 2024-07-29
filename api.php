@@ -1,12 +1,8 @@
 <?php
-    if(!isset($_GET['search'])){
-        $_GET['search'] = '';
-    }
-    if(!isset($_GET['sort_by'])){
-        $_GET['sort_by'] = 'alphabetical';
-    }
-    $search = $_GET['search'];
-    $sortBy = $_GET['sort_by'];
+    $search = $_GET['search'] ?? '';
+    $sortBy = $_GET['sort_by'] ?? 'alphabetical';
+    $offset = (int)($_GET['offset'] ?? 0);
+    $limit = (int)($_GET['limit'] ?? 12);
     $apiUrl = "https://www.freetogame.com/api/games";
     $response = file_get_contents($apiUrl);
     $games = json_decode($response, true);
@@ -32,6 +28,11 @@
             });
             break;
     }
+    $totalGames = count($games);
+    $games = array_slice($games, $offset, $limit);
     header('Content-Type: application/json');
-    echo json_encode(array_values($games));
+    echo json_encode([
+        'games' => array_values($games),
+        'totalGames' => $totalGames
+    ]);
 ?>
