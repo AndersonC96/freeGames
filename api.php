@@ -1,6 +1,7 @@
 <?php
     $search = $_GET['search'] ?? '';
     $sortBy = $_GET['sort_by'] ?? 'alphabetical';
+    $genre = $_GET['genre'] ?? '';
     $offset = (int)($_GET['offset'] ?? 0);
     $limit = (int)($_GET['limit'] ?? 12);
     $apiUrl = "https://www.freetogame.com/api/games";
@@ -9,6 +10,11 @@
     if($search){
         $games = array_filter($games, function($game) use ($search){
             return stripos($game['title'], $search) !== false;
+        });
+    }
+    if($genre){
+        $games = array_filter($games, function($game) use ($genre){
+            return stripos($game['genre'], $genre) !== false;
         });
     }
     switch($sortBy){
