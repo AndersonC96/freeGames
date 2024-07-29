@@ -39,7 +39,7 @@ O **Free Games Viewer** é uma aplicação web que permite aos usuários pesquis
     - Para XAMPP, abra o Painel de Controle do XAMPP e inicie o servidor Apache.
 
 5. Abra a aplicação:
-    - No seu navegador web, navegue até `http://localhost/free-games-viewer`.
+    - No seu navegador web, navegue até `http://localhost/freeGames`.
 
 ## Uso
 
