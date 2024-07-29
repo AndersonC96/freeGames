@@ -9,19 +9,25 @@
             body{
                 font-family: 'Arial', sans-serif;
             }
+            .card{
+                transition: transform 0.2s;
+            }
+            .card:hover{
+                transform: translateY(-5px);
+            }
         </style>
     </head>
-    <body class="bg-gray-100">
+    <body class="bg-gray-900 text-white">
         <div class="container mx-auto p-4">
-            <h1 class="text-4xl font-bold text-center text-blue-600 mb-6">Free Games</h1>
-            <form id="search-form" class="mb-6">
-                <input type="text" id="search" class="border border-blue-300 p-2 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search for a game...">
-                <select id="sort-by" class="border border-blue-300 p-2 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <h1 class="text-4xl font-bold text-center text-yellow-400 mb-6">Free Games</h1>
+            <form id="search-form" class="mb-6 flex flex-wrap justify-center gap-4">
+                <input type="text" id="search" class="border border-yellow-400 bg-gray-800 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Search for a game...">
+                <select id="sort-by" class="border border-yellow-400 bg-gray-800 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
                     <option value="alphabetical">Alphabetical</option>
                     <option value="release-date">Release Date</option>
                     <option value="popularity">Popularity</option>
                 </select>
-                <select id="genre" class="border border-blue-300 p-2 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <select id="genre" class="border border-yellow-400 bg-gray-800 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
                     <option value="">All Genres</option>
                     <option value="Action">Action</option>
                     <option value="Action Game">Action Game</option>
@@ -42,13 +48,13 @@
                     <option value="Sports">Sports</option>
                     <option value="Strategy">Strategy</option>
                 </select>
-                <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition duration-300">Search</button>
+                <button type="submit" class="bg-yellow-500 text-gray-900 p-2 rounded-md hover:bg-yellow-600 transition duration-300">Search</button>
             </form>
             <div id="games-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6"></div>
             <div id="pagination" class="flex justify-center space-x-2">
-                <button id="prev-page" class="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition duration-300">Previous</button>
-                <span id="page-number" class="text-blue-600 font-bold p-2"></span>
-                <button id="next-page" class="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition duration-300">Next</button>
+                <button id="prev-page" class="bg-yellow-500 text-gray-900 p-2 rounded-md hover:bg-yellow-600 transition duration-300">Previous</button>
+                <span id="page-number" class="text-yellow-400 font-bold p-2"></span>
+                <button id="next-page" class="bg-yellow-500 text-gray-900 p-2 rounded-md hover:bg-yellow-600 transition duration-300">Next</button>
             </div>
         </div>
         <script>
@@ -96,11 +102,11 @@
                     gamesContainer.innerHTML = '';
                     data.games.forEach(game => {
                         const gameElement = document.createElement('div');
-                        gameElement.classList.add('bg-gray-800', 'text-white', 'p-4', 'rounded-lg', 'shadow-md', 'hover:shadow-xl', 'transition', 'duration-300');
+                        gameElement.classList.add('card', 'bg-gray-800', 'p-4', 'rounded-lg', 'shadow-md', 'hover:shadow-xl', 'transition', 'duration-300');
                         gameElement.innerHTML = `
                             <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-48 object-cover rounded mb-4">
                             <div class="p-2">
-                                <h2 class="text-2xl font-bold mb-2">${game.title}</h2>
+                                <h2 class="text-2xl font-bold mb-2 text-yellow-400">${game.title}</h2>
                                 <p class="text-gray-300 mb-2">${game.short_description}</p>
                                 <p class="text-gray-400 text-sm mt-2"><b>Release Date</b>: ${formatDate(game.release_date)}</p>
                                 <p class="text-gray-400 text-sm mt-2"><b>Developer</b>: ${game.developer}</p>
@@ -111,7 +117,7 @@
                                         ${getPlatformIcon(game.platform)}
                                     </span>
                                 </div>
-                                <a href="${game.game_url}" target="_blank" class="block bg-blue-600 text-center mt-4 py-2 rounded hover:bg-blue-700 transition duration-300">Play Now</a>
+                                <a href="${game.game_url}" target="_blank" class="block bg-yellow-500 text-center mt-4 py-2 rounded hover:bg-yellow-600 transition duration-300">Play Now</a>
                             </div>
                         `;
                         gamesContainer.appendChild(gameElement);
