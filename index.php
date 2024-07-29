@@ -21,6 +21,27 @@
                     <option value="release-date">Release Date</option>
                     <option value="popularity">Popularity</option>
                 </select>
+                <select id="genre" class="border border-blue-300 p-2 w-full mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">All Genres</option>
+                    <option value="Action">Action</option>
+                    <option value="Action Game">Action Game</option>
+                    <option value="Action RPG">Action RPG</option>
+                    <option value="ARPG">ARPG</option>
+                    <option value="Battle Royale">Battle Royale</option>
+                    <option value="Card">Card</option>
+                    <option value="Card Game">Card Game</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Fighting">Fighting</option>
+                    <option value="MMO">MMO</option>
+                    <option value="MMOARPG">MMOARPG</option>
+                    <option value="MMORPG">MMORPG</option>
+                    <option value="MOBA">MOBA</option>
+                    <option value="Racing">Racing</option>
+                    <option value="Shooter">Shooter</option>
+                    <option value="Social">Social</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Strategy">Strategy</option>
+                </select>
                 <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition duration-300">Search</button>
             </form>
             <div id="games-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6"></div>
@@ -66,8 +87,9 @@
             function fetchGames(){
                 const search = document.getElementById('search').value;
                 const sortBy = document.getElementById('sort-by').value;
+                const genre = document.getElementById('genre').value;
                 const offset = (currentPage - 1) * resultsPerPage;
-                fetch(`api.php?search=${search}&sort_by=${sortBy}&offset=${offset}&limit=${resultsPerPage}`)
+                fetch(`api.php?search=${search}&sort_by=${sortBy}&genre=${genre}&offset=${offset}&limit=${resultsPerPage}`)
                 .then(response => response.json())
                 .then(data => {
                     const gamesContainer = document.getElementById('games-container');
