@@ -73,5 +73,3 @@ Para personalizar a aplicação, você pode modificar os seguintes itens:
 - **Requisições à API**: Modifique a lógica das requisições à API em `index.php` e `api.php` para buscar dados adicionais ou aplicar diferentes filtros e opções de classificação.
 
 ---
-
-Sinta-se à vontade para contribuir com este projeto. Para maiores informações sobre como contribuir, consulte o arquivo `CONTRIBUTING.md`.
